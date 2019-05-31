@@ -1,0 +1,7 @@
+---
+applications:
+- name: scs-customer-simulator
+  memory: 1024MB
+  path: target/scs-fmcg-0.0.1-SNAPSHOT.jar
+  services:
+  - geekathon-event-mesh

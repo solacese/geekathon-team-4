@@ -1,0 +1,49 @@
+customer:
+  identifier: 100000050
+  region: us2
+spring:
+  cloud:
+    stream:
+      default-binder: geekathon-mesh
+      bindings:
+        input:
+          destination: PRODINFO.SAP
+          group: ${customer.identifier}
+        output:
+          destination: ${customer.region}/order/cust/${customer.identifier}/shop/200000000
+      binders:
+        geekathon-mesh:
+          type: solace
+          environment:
+            solace:
+              java:
+                host: tcp://vmr-mr4tcaa690q5p.messaging.solace.cloud:20256
+                msgVpn: msgvpn-8ksiwsoxmad
+                clientUsername: solace-cloud-client
+                clientPassword: bil5b8c30csl2r3ls82m5k9sub
+                connectRetries: -1
+                reconnectRetries: -1
+        local_solace:
+          type: solace
+          environment:
+            solace:
+              java:
+                host: tcp://localhost:55555
+                msgVpn: default
+                clientUsername: default
+                clientPassword: default
+                connectRetries: -1
+                reconnectRetries: -1
+      solace:
+        bindings:
+          input:
+            consumer:
+              queueAdditionalSubscriptions: ${customer.region}/prodinfo/sap/>
+logging:
+  level:
+    root: INFO
+    com.solacesystems.jcsmp: INFO
+    org.springframework: INFO
+    
+server:
+  port: 8094
