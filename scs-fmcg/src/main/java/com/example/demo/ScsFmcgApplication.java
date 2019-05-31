@@ -69,7 +69,7 @@ public class ScsFmcgApplication {
     }
   }
 
-  @InboundChannelAdapter(channel = Processor.OUTPUT, poller = @Poller(fixedRate = "1000"))
+  @InboundChannelAdapter(channel = Processor.OUTPUT, poller = @Poller(fixedRate = "30000"))
   public OrderDeliveryList sendOrder() {
     int numberItems = rand.nextInt(3) + 1; // number from 1 to 3
     List<Item> li = new ArrayList<Item>();
