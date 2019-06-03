@@ -152,13 +152,15 @@ var ShoppingCart = (function ($) {
             var orderItem = {
                 "productId": `${item.product.productId}`,
                 "text": `${item.product.text}`,
-                "quantity": `${item.quantity}`,
+                "quantity": new Number(`${item.quantity}`),
                 "currency": `${item.product.currency}`,
-                "price": `${item.product.price}`
+                "price": new Number(`${item.product.price}`)
             };
             order.items.push(orderItem);
         });
-        return JSON.stringify(order);
+        var orderJSON = JSON.stringify(order);
+        console.log('built order: ' + orderJSON);
+        return orderJSON;
     }
 
     // This functon starts the whole application
