@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simply Stunning Geekathon Team 4 Mesh</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      font-size: 1em;
+      background-color: #333333;
+      padding-top: 70px;
+      padding-bottom: 20px;
+    }
+    .button {
+      background-color: #333333;
+      color: #00CB95;
+      border: 2px solid #CCCCCC;
+      /* border-radius: 12px; */
+    }
+    .panel-heading {
+      color: #EEEEEE;
+      background: #777777;
+    }
+
+    .panel-body {
+      color: #EEEEEE;
+      background: #777777;
+    }
+
+    @media (max-width: 300px) {
+      html {
+        font-size: 70%;
+      }
+    }
+
+    @media (min-width: 400px) {
+      html {
+        font-size: 80%;
+      }
+    }
+
+    @media (min-width: 700px) {
+      html {
+        font-size: 120%;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      html {
+        font-size: 140%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-12">
+          <a href='http://www.solace.com' alt='Solace.com'><img src='./logo.png' /></a>
+        </div>
+      </div>
+    </div>
+    <!-- Publish panel -->
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="chevron-toggle" data-toggle="collapse" data-target="#configCollapse" href="#collapseOne">
+            <span id="connectionStatus">Connection - Disconnected.</span>
+          </a>
+        </div>
+        <div class="panel-body" id="configCollapse">
+          <form method="POST">
+            <div class="row">
+              <!-- <div class="col-xs-10">
+                <div class="form-group">
+                  <label for="hostInput">Broker</label>
+                  <input type="text" class="form-control" id="hostInput" value="mrq8m7h73wx2t.messaging.solace.cloud">
+                  <select id="hostInput">
+                    <option value="mrq8m7h73wx2t.messaging.solace.cloud">Singapore (GCP)</option>
+                    <option value="mrq8m7h73u2nv.messaging.solace.cloud">Frankfurt (AWS)</option>
+                    <option value="mr-q8m7h73wxpl.messaging.solace.cloud">US East (Azure)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="hostInput">Host</label>
+                  <input type="text" class="form-control" id="hostInput" value="mrq8m7h73wx2t.messaging.solace.cloud">
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label for="portInput">Port</label>
+                  <input type="text" class="form-control" id="portInput" value="8443">
+                </div>
+              </div> -->
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="userInput">Username</label>
+                  <input type="text" class="form-control" id="userInput" value="customer">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="passInput">Password</label>
+                  <input type="password" class="form-control" id="passInput" value="">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="shopID">Shop ID</label>
+                  <input type="text" class="form-control" id="shopID" value="200000000">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="custID">Customer ID</label>
+                  <input type="text" class="form-control" id="custID" value="">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="clientConnectButton"></label>
+                  <a id="clientConnectButton" class="btn btn-default" onclick="connectionToggle();">Connect</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      </form>
+    </div>
+    <!-- End of Publish panel -->
+
+    <div class="col-xs-12" id="order">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="chevron-toggle" data-toggle="collapse" data-target="#productCollapse" href="#collapseOne">
+            Product Catalog
+          </a>
+        </div>
+        <div class="panel-body collapse in fixed-height-panel-pre" id="productCollapse">
+          <div class="products"></div><!-- products -->
+        </div>
+        <div class="panel-body collapse in fixed-height-panel-pre" id="productCollapse">
+          <div class="shopping-cart">
+            <div class="shopping-cart-head">
+              <span class="product-quantity">0</span> Product(s) in Cart
+            </div>
+            <ul class="shopping-cart-list">
+            </ul>
+            <div class="cart-buttons">
+              <a href="#0" class="button empty-cart-btn">Empty</a>
+              <a href="#0" class="button cart-checkout">Checkout - <span class="total-price">$0</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="chevron-toggle" data-toggle="collapse" data-target="#historyCollapse" href="#collapseOne">Order
+            Status</a>
+        </div>
+        <div class="panel-body collapse in fixed-height-panel" id="historyCollapse">
+          <table class="table table-condensed  tableSection" id="incomingMessageTable">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Order Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a class="chevron-toggle" data-toggle="collapse" data-target="#consoleCollapse" href="#collapseOne">
+            Console
+          </a>
+        </div>
+        <div class="panel-body collapse in fixed-height-panel-pre" id="consoleCollapse">
+          <pre id="consolePre" class="pre-scrollable"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Source Paho MQTT Client-->
+  <!-- <script src="paho-mqtt.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+
+  <!-- Our geek Javascript -->
+  <script src="./geek.js"></script>
+  <script src="./order.js"></script>
+
+  <!-- Javascript used for Bootstrap Theme -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</body>
+
+</html>
