@@ -150,6 +150,11 @@ function connectionToggle() {
 }
 
 function connect() {
+  // validate the inputs first!
+  if (!checkForm()) {
+    return; // do nothing if input not valid
+  }
+
   // var hostname = document.getElementById("hostInput").value;
   var user = document.getElementById("userInput").value;
   var pass = document.getElementById("passInput").value;
@@ -217,4 +222,30 @@ function setFormEnabledState(enabled) {
   document.getElementById("shopID").disabled = enabled;
   document.getElementById("custID").disabled = enabled;
 
+}
+
+
+function checkForm()
+{
+
+  var custIDfield = document.getElementById("custID");
+  // validation fails if the input is blank
+  if(custIDfield.value == "") {
+    alert("Error: Input is empty!");
+    custIDfield.focus();
+    return false;
+  }
+
+  // regular expression to match only alphanumeric characters and spaces
+  var re = /^[\w]+$/;
+
+  // validation fails if the input doesn't match our regular expression
+  if(!re.test(custIDfield.value)) {
+    alert("Error: Input contains invalid characters!");
+    custIDfield.focus();
+    return false;
+  }
+
+  // validation was successful
+  return true;
 }
